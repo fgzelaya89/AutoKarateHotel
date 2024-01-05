@@ -1,0 +1,84 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.booking.rumbonet.riu.com" xmlns:dtos="http://dtos.booking.rumbonet.riu.com" xmlns:ser1="http://services.common.rumbonet.riu.com">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ser:recuperarTablaPreciosRB>
+            <ser:in0>
+                <!--Optional:-->
+                <dtos:codigoAccesoUsuario>DIRECTO</dtos:codigoAccesoUsuario>
+                <!--Optional:-->
+                <dtos:codigoAmbito>DIR</dtos:codigoAmbito>
+                <dtos:codigoPaisAmbito>ES</dtos:codigoPaisAmbito>
+                <!--Optional:-->
+                <dtos:codigoRegimen>MP</dtos:codigoRegimen>
+                <dtos:fechaEntrada>2023-12-24T00:00:00.000+00:00</dtos:fechaEntrada>
+                <!--Optional:-->
+                <dtos:fechaSalida>2023-12-29T00:00:00.000+00:00</dtos:fechaSalida>
+                <dtos:listaHabitaciones>
+                    <!--Optional:-->
+                    <dtos:listaHabitaciones>
+                        <!--Zero or more repetitions:-->
+                        <dtos:DispHabitacionDto>
+                            <!--Optional:-->
+                            <dtos:listaedades>
+                                <!--Zero or more repetitions:-->
+                            </dtos:listaedades>
+                            <!--Optional:-->
+                            <dtos:numeroAdultos>2</dtos:numeroAdultos>
+                            <!--Optional:-->
+                            <dtos:numeroBabies>0</dtos:numeroBabies>
+                            <!--Optional:-->
+                            <dtos:numeroInfants>0</dtos:numeroInfants>
+                        </dtos:DispHabitacionDto>
+                        <dtos:DispHabitacionDto>
+                            <!--Optional:-->
+                            <dtos:listaedades>
+                                <!--Zero or more repetitions:-->
+                            </dtos:listaedades>
+                            <!--Optional:-->
+                            <dtos:numeroAdultos>3</dtos:numeroAdultos>
+                            <!--Optional:-->
+                            <dtos:numeroBabies>0</dtos:numeroBabies>
+                            <!--Optional:-->
+                            <dtos:numeroInfants>0</dtos:numeroInfants>
+                        </dtos:DispHabitacionDto>
+                        <dtos:DispHabitacionDto>
+                            <!--Optional:-->
+                            <dtos:listaedades>
+                                <!--Zero or more repetitions:-->
+                            </dtos:listaedades>
+                            <!--Optional:-->
+                            <dtos:numeroAdultos>3</dtos:numeroAdultos>
+                            <!--Optional:-->
+                            <dtos:numeroBabies>0</dtos:numeroBabies>
+                            <!--Optional:-->
+                            <dtos:numeroInfants>0</dtos:numeroInfants>
+                        </dtos:DispHabitacionDto>
+
+
+                    </dtos:listaHabitaciones>
+                </dtos:listaHabitaciones>
+                <dtos:listaTipoHabitaciones>
+                    <!--Zero or more repetitions:-->
+
+                </dtos:listaTipoHabitaciones>
+                <!--Optional:-->
+                <dtos:listaHoteles>
+                    <!--Optional:-->
+                    <dtos:listaHoteles>
+                        <!--Zero or more repetitions:-->
+                        <ser1:int>141</ser1:int>
+                    </dtos:listaHoteles>
+                </dtos:listaHoteles>
+                <!--Optional:-->
+                <dtos:numeroAdultos>8</dtos:numeroAdultos>
+                <!--Optional:-->
+                <dtos:numeroBabies>0</dtos:numeroBabies>
+                <!--Optional:-->
+                <dtos:numeroHabitaciones>3</dtos:numeroHabitaciones>
+                <!--Optional:-->
+                <dtos:numeroInfants>0</dtos:numeroInfants>
+                <dtos:promocode>RIU15CORP</dtos:promocode>
+            </ser:in0>
+        </ser:recuperarTablaPreciosRB>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -5,8 +5,6 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class PruebaData {
     private String idPrueba = null;
@@ -67,11 +65,60 @@ public class PruebaData {
             case "DIR":
                 return "DIRECTO";
 
-            case "opcion2":
-                return "Valor para Opción 2";
+            case "AGE":
+                return "AGENCIA";
 
-            case "opcion3":
-                return "Valor para Opción 3";
+            case "RC":
+                return "RIU_CLASS";
+
+            case "RPC":
+                return "RIU_PARTNER_CLUB";
+
+            default:
+                return "No Parametrizado";
+        }
+    }
+
+    public String AmbitoRest() {
+        switch (getAmbito()) {
+            case "DIR":
+                return "DIRECT";
+
+            case "AGE":
+                return "AGENCY";
+
+            case "RC":
+                return "RIU_CLASS";
+
+            case "RPC":
+                return "RIU_PARTNER_CLUB";
+            case "TTOO":
+                return "TTOO";
+
+            default:
+                return "No Parametrizado";
+        }
+    }
+
+    public String Boards() {
+        switch (getCodTre()) {
+            case "MP":
+                return "HALF_BOARD";
+
+            case "HD":
+                return "ROOM_AND_BREAKFAST";
+
+            case "SH":
+                return "ACCOMMODATION_ONLY";
+
+            case "AI":
+                return "ALL_INCLUDED";
+
+            case "AA":
+                return "ALL_INCLUDED_WITHOUT_ALCOHOL";
+
+            case "PC":
+                return "FULL_BOARD";
 
             default:
                 return "No Parametrizado";
@@ -103,7 +150,7 @@ public class PruebaData {
     }
 
     public String getPuntosGastar() {
-        return puntosGastar;
+        return (puntosGastar != "") ? puntosGastar.split("\\.")[0] : "";
     }
 
     public void setPuntosGastar(String puntosGastar) {
@@ -119,7 +166,7 @@ public class PruebaData {
     }
 
     public String getIdeHot() {
-        return ideHot;
+        return ideHot.split("\\.")[0];
     }
 
     public void setIdeHot(String ideHot) {
@@ -159,7 +206,7 @@ public class PruebaData {
     }
 
     public String getNumHab() {
-        return numHab;
+        return numHab.split("\\.")[0];
     }
 
     public void setNumHab(String numHab) {
@@ -191,7 +238,7 @@ public class PruebaData {
     }
 
     public String getNumAdu1() {
-        return numAdu1;
+        return (numAdu1 != "") ? numAdu1.split("\\.")[0] : "0";
     }
 
     public void setNumAdu1(String numAdu1) {
@@ -199,7 +246,7 @@ public class PruebaData {
     }
 
     public String getNumNin1() {
-        return numNin1;
+        return (numNin1 != "") ? numNin1.split("\\.")[0] : "0";
     }
 
     public void setNumNin1(String numNin1) {
@@ -207,7 +254,8 @@ public class PruebaData {
     }
 
     public String getNumAdu2() {
-        return numAdu2;
+        return (numAdu2 != "") ? numAdu2.split("\\.")[0] : "0";
+
     }
 
     public void setNumAdu2(String numAdu2) {
@@ -215,7 +263,7 @@ public class PruebaData {
     }
 
     public String getNumNin2() {
-        return numNin2;
+        return (numNin2 != "") ? numNin2.split("\\.")[0] : "0";
     }
 
     public void setNumNin2(String numNin2) {
@@ -223,7 +271,7 @@ public class PruebaData {
     }
 
     public String getNumAdu3() {
-        return numAdu3;
+        return (numAdu3 != "") ? numAdu3.split("\\.")[0] : "0";
     }
 
     public void setNumAdu3(String numAdu3) {
@@ -231,7 +279,7 @@ public class PruebaData {
     }
 
     public String getNumNin3() {
-        return numNin3;
+        return (numNin3 != "") ? numNin3.split("\\.")[0] : "0";
     }
 
     public void setNumNin3(String numNin3) {
@@ -406,12 +454,18 @@ public class PruebaData {
                 ", creationDate='" + creationDate + '\'' +
                 ", lastUpdateDate='" + lastUpdateDate + '\'' +
                 ", obs='" + obs + '\'' +
+                ", totalAdultos='" + totalAdulto() + '\'' +
+                ", totalNinos='" + totalNinos() + '\'' +
+                ", newFormatFecLle='" + newFormatFecLle() + '\'' +
+                ", newFormatSal='" + newFormatSal() + '\'' +
+                ", validarTotalHabitacion='" + validarTotalHabitacion() + '\'' +
+                ", totalHabitacion='" + totalHabitacion() + '\'' +
                 '}';
     }
 
     public static PruebaData getPruebaDataRowExcel(Row row) throws ParseException {
 
-            String c = fechaEnFormatoCorrecto(row.getCell(8));
+        String c = fechaEnFormatoCorrecto(row.getCell(8));
         PruebaData pruebaData = new PruebaData();
         pruebaData.setIdPrueba(row.getCell(0).toString());
         pruebaData.setAmbito(row.getCell(1).toString());
@@ -462,11 +516,60 @@ public class PruebaData {
         return pruebaData;
     }
 
-    public static String fechaEnFormatoCorrecto(Cell c){
+    public static String fechaEnFormatoCorrecto(Cell c) {
         DataFormatter dataFormatter = new DataFormatter();
         String fechaEnFormatoCorrecto = dataFormatter.formatCellValue(c); // cell es la celda que contiene la fecha
         return fechaEnFormatoCorrecto;
     }
 
+    public String totalAdulto() {
+        int auxNumAdu1 = Integer.parseInt((numAdu1 != "") ? numAdu1.split("\\.")[0] : "0");
+        int auxNumAdu2 = Integer.parseInt((numAdu2 != "") ? numAdu2.split("\\.")[0] : "0");
+        int auxNumAdu3 = Integer.parseInt((numAdu3 != "") ? numAdu3.split("\\.")[0] : "0");
+        return String.valueOf((auxNumAdu1 + auxNumAdu2 + auxNumAdu3));
+    }
 
+    public String totalNinos() {
+        int auxNumNim1 = Integer.parseInt((numNin1 != "") ? numNin1.split("\\.")[0] : "0");
+        int auxNumNim2 = Integer.parseInt((numNin2 != "") ? numNin2.split("\\.")[0] : "0");
+        int auxNumNim3 = Integer.parseInt((numNin3 != "") ? numNin3.split("\\.")[0] : "0");
+        return String.valueOf((auxNumNim1 + auxNumNim2 + auxNumNim3));
+    }
+
+    public String totalBebies() {
+        return "0";
+    }
+
+    public String newFormatFecLle() {
+        String fch[] = this.fecEmi.split("/");
+        //ano/mes/dia
+        String auxMes = (Integer.parseInt(fch[0]) < 10) ? "0" + fch[0] : fch[0];
+        String auxDia = (Integer.parseInt(fch[1]) < 10) ? "0" + fch[1] : fch[1];
+        return fch[2] + "-" + auxMes + "-" + auxDia + "T00:00:00.000+00:00";
+    }
+
+    public String newFormatSal() {
+        String fch[] = this.fecSal.split("/");
+        //ano/mes/dia
+        String auxMes = (Integer.parseInt(fch[0]) < 10) ? "0" + fch[0] : fch[0];
+        String auxDia = (Integer.parseInt(fch[1]) < 10) ? "0" + fch[1] : fch[1];
+        return fch[2] + "-" + auxMes + "-" + auxDia + "T00:00:00.000+00:00";
+    }
+
+    public boolean validarTotalHabitacion() {
+        int auxNumHabitacion = Integer.parseInt(this.getNumHab());
+        int contHabitacion = totalHabitacion();
+        return (auxNumHabitacion == contHabitacion);
+    }
+
+    public int totalHabitacion() {
+        int auxHabiUno = Integer.parseInt(this.getNumAdu1());
+        int auxHabiDos = Integer.parseInt(this.getNumAdu2());
+        int auxHabiTres = Integer.parseInt(this.getNumAdu3());
+        int cont = 0;
+        if (auxHabiUno > 0) cont++;
+        if (auxHabiDos > 0) cont++;
+        if (auxHabiTres > 0) cont++;
+        return cont;
+    }
 }
