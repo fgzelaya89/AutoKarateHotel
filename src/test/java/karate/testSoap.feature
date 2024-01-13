@@ -3,6 +3,7 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
 
 
     #lectura archivo xml si funciona
+
   Scenario Outline: caso de prueba read xml <numero>
     Given url 'https://www.dataaccess.com/webservicesserver/NumberConversion.wso'
     When header Content-Type = 'text/xml'
@@ -19,7 +20,7 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
       | 11     | eleven        |
       | 200    | two hundred   |
 
-  @first
+  @firstTest
   Scenario Outline: Test de prueba read xml <numero>
     * def funTestCase =
     """
@@ -54,7 +55,20 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
     """
     And method POST
     And match //*[local-name()='NumberToDollarsResult'] == result
+    ###############responseSOAP####################
     * print '<response>: ', response
+    * def responseSOAP =
+    """
+    function(response){
+        var utilsDate = Java.type('util.UtilsDate');
+        var request = utilsDate.responseSOAP(response);
+        }
+    """
+    * def miRespuesta = response
+    * print 'Variable: ', miRespuesta
+    * def responseSOAPAsString = miRespuesta.toString()
+    * def callResponseSOAP = responseSOAP(responseSOAPAsString)
+    ###############FIN responseSOAP####################
 
     * def numberToDollarsResult = //*[local-name()='NumberToDollarsResult']
     * print '<NumberToDollarsResult>: ', numberToDollarsResult
@@ -65,6 +79,7 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
       | 1      |
       | 2      |
       | 3      |
+
 
 
   Scenario: Crear un nuevo producto
@@ -91,19 +106,77 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
     Then status 201
     And print 'result ',response
 
+  @LeerXML
+  Scenario: leerXML
+    Given url 'https://www.dataaccess.com/webservicesserver/NumberConversion.wso'
+    When header Content-Type = 'text/xml'
+    * def auxResponse = read ('responseSOAP.xml')
+    And print 'responsex ',auxResponse
+    #And def json = $bodyX
+    #And print 'json >',json
 
-  Scenario: Buscar un valor en el XML
-    Given def xmlData =
+    ###############responseSOAP####################
+    * def responseSOAP =
     """
-    <root>
-        <element1>valor1</element1>
-        <element2>valor2</element2>
-        <element3>
-            <subelement>valor3</subelement>
-        </element3>
-    </root>
+    function(response){
+         var ValidarResponse = Java.type('util.ValidarResponse');
+        var request = ValidarResponse.readResponseSOAP(response);
+        return request;
+        }
     """
+    ##* def miRespuesta = response <---Es la q va!!!
+    * def miRespuesta = auxResponse
+    ##VEO LA REPUESTA
+    * print 'miRespuesta: ', miRespuesta
 
-    When def valorEncontrado = karate.xmlPath(xmlData, "/root/element2").text()
+    ####SOLO PARA PRUEBAS LOCALES FORMATIAMOS EL ARCHIVO PARA PODER TRABAJAR EN EL XML
+    * def responseSOAPAsString = miRespuesta
+    * print 'responseSOAPAsString: ', responseSOAPAsString
+    * def xmlFormateado = karate.prettyXml(miRespuesta)
 
-    Then match valorEncontrado == 'valor2'
+    ####ENVIAMOS ANALISAR EL RESPONSE DEL SERVICIO SOAP
+    * def callResponseSOAP = responseSOAP(xmlFormateado)
+    * print 'callResponseSOAP: ', callResponseSOAP.toString()
+
+
+
+  @TestJSON
+  Scenario: Crear un nuevo producto
+    Given path '/catalog/product'
+    * url 'https://mystoreapi.com'
+
+    * def funRequest =
+    """
+    function(){
+        var utilsDate = Java.type('util.UtilsDate');
+        var request = utilsDate.requestMyStoreApiTres();
+        return request;
+        }
+    """
+    * def v_rest = funRequest()
+    * print 'REQUEST>>: ', v_rest
+
+
+    * configure ssl = true
+    And header Accept = 'application/json'
+    And header Content-Type = 'application/json'
+    And request   v_rest
+    When method post
+    Then status 201
+    And print 'result ',response
+
+
+    #######
+    * def responseJSON =
+    """
+    function(response){
+         var ValidarResponse = Java.type('util.ValidarResponse');
+        var request = ValidarResponse.readResponseRest(response);
+        return request;
+        }
+    """
+    * def stringResponse = response
+    * print 'stringResponse: ', stringResponse
+    #* def responseRest = responseJSON(stringResponse)
+    * def auxResponse = read ('responseRest.json')
+    * print 'auxResponse: ',auxResponse

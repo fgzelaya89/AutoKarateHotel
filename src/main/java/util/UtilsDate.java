@@ -11,6 +11,7 @@ import model.request.RequestRest.GuestDistributionsItem;
 import model.request.RequestRest.RequestRest;
 import model.request.RequestSOAP;
 import model.request.testBorrar.RequestMyStoreApi;
+import model.responseSOAP.ReadResponseSOAP;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -89,6 +90,13 @@ public class UtilsDate {
                 .orElse(null); // Si no se encuentra ningún elemento, devuelve null
 
         return resultPruebaData;
+    }
+
+    public static String responseSOAP(String responseSOAP){
+        System.out.println("responseSOAP:\n\t"+responseSOAP);
+        String aux = ReadResponseSOAP.getListValorarCombinacionesRbDto(responseSOAP).get(0).toString();
+        System.out.println("getListValorarCombinacionesRbDto:\n\t"+aux);
+        return "OK";
     }
 
     public static TestCase getTestCase(String tstCase) {

@@ -21,7 +21,7 @@ class SampleTest {
 
     @Karate.Test
     Karate testFullPath() {
-        return Karate.run("classpath:karate/testSoap.feature").tags("@first");
+        return Karate.run("classpath:karate/testSoap.feature").tags("@TestJSON");
     }
 
     @Karate.Test
