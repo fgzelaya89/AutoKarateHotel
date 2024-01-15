@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import model.request.newRquestRest.LoyaltyRiuclass;
+import model.request.newRquestRest.LoyaltyRiupartnerclass;
 
 public class RequestRest {
 
@@ -33,6 +35,85 @@ public class RequestRest {
 
     @JsonProperty("boards")
     private List<String> boards = new ArrayList<String>();
+
+//Agregado a mano !!
+    @JsonProperty("promocode")
+    private String promocode;
+
+    @JsonProperty("booking_reference")
+    private String booking_reference;
+
+    @JsonProperty("query_effective_date")
+    private String query_effective_date;
+
+    @JsonProperty("rate_reference")
+    private String rate_reference;
+
+    @JsonProperty("client")
+    private String client;
+
+    @JsonProperty("loyalty_riuclass")
+    private LoyaltyRiuclass loyaltyRiuclass;
+
+    @JsonProperty("loyalty_riupartnerclass")
+    private LoyaltyRiupartnerclass loyaltyRiupartnerclass;
+
+
+    public String getPromocode() {
+        return promocode;
+    }
+
+    public void setPromocode(String promocode) {
+        this.promocode = promocode;
+    }
+
+    public String getBooking_reference() {
+        return booking_reference;
+    }
+
+    public void setBooking_reference(String booking_reference) {
+        this.booking_reference = booking_reference;
+    }
+
+    public String getQuery_effective_date() {
+        return query_effective_date;
+    }
+
+    public void setQuery_effective_date(String query_effective_date) {
+        this.query_effective_date = query_effective_date;
+    }
+
+    public String getRate_reference() {
+        return rate_reference;
+    }
+
+    public void setRate_reference(String rate_reference) {
+        this.rate_reference = rate_reference;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
+
+    public LoyaltyRiuclass getLoyaltyRiuclass() {
+        return loyaltyRiuclass;
+    }
+
+    public void setLoyaltyRiuclass(LoyaltyRiuclass loyaltyRiuclass) {
+        this.loyaltyRiuclass = loyaltyRiuclass;
+    }
+
+    public LoyaltyRiupartnerclass getLoyaltyRiupartnerclass() {
+        return loyaltyRiupartnerclass;
+    }
+
+    public void setLoyaltyRiupartnerclass(LoyaltyRiupartnerclass loyaltyRiupartnerclass) {
+        this.loyaltyRiupartnerclass = loyaltyRiupartnerclass;
+    }
 
     public String getGuestCheckinDate() {
         return guestCheckinDate;
@@ -130,6 +211,13 @@ public class RequestRest {
                 ", guestDistributions=" + guestDistributions +
                 ", channel='" + channel + '\'' +
                 ", boards=" + boards +
+                ", promocode='" + promocode + '\'' +
+                ", booking_reference='" + booking_reference + '\'' +
+                ", query_effective_date='" + query_effective_date + '\'' +
+                ", rate_reference='" + rate_reference + '\'' +
+                ", client='" + client + '\'' +
+                ", loyaltyRiuclass=" + loyaltyRiuclass +
+                ", loyaltyRiupartnerclass=" + loyaltyRiupartnerclass +
                 '}';
     }
 }

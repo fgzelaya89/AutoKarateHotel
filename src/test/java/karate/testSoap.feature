@@ -81,7 +81,7 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
       | 3      |
 
 
-
+@soloJSON
   Scenario: Crear un nuevo producto
     Given path '/catalog/product'
     * url 'https://mystoreapi.com'
@@ -105,6 +105,23 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
     When method post
     Then status 201
     And print 'result ',response
+
+  * def responseJSON =
+    """
+    function(response){
+         var ValidarResponse = Java.type('util.ValidarResponse');
+        var request = ValidarResponse.convertObjectToList(response);
+        return request;
+        }
+    """
+  #* def stringResponse = response
+  #* print 'stringResponse: ', stringResponse
+  #* print 'obj.toString(): ', stringResponse.toString()
+   * def responseRest = responseJSON(response)
+
+
+
+
 
   @LeerXML
   Scenario: leerXML
@@ -180,3 +197,4 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
     #* def responseRest = responseJSON(stringResponse)
     * def auxResponse = read ('responseRest.json')
     * print 'auxResponse: ',auxResponse
+    * def responseRest = responseJSON(auxResponse)
