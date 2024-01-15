@@ -1,0 +1,533 @@
+{
+  "messages": null,
+  "availabilities": [
+    {
+      "messages": null,
+      "code": "0",
+      "hotel": 102,
+      "board": "ROOM_AND_BREAKFAST",
+      "rates_type": "refundable",
+      "combination": {
+        "combination_type": "DIFF",
+        "rooms": [
+          {
+            "room_type_code": "SJSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 3797.12 "<precio>2484.48</precio> ---Recuperar Segundo"
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 3451.927272727
+              }
+            ],
+            "free_paxes": null
+          },
+          {
+            "room_type_code": "SJSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 3797.12 
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 3451.927272727
+              }
+            ],
+            "free_paxes": null
+          }
+        ]
+      },
+      "prices": {
+        "price_with_tax": {
+          "currency": "EUR", "<codigoDivisa>EUR</codigoDivisa> ---Recuperar primero"
+          "amount": 7594.24 "<precio>4968.96</precio> ---Recuperar primero"
+        },
+        "price_without_tax": {
+          "currency": "EUR",
+          "amount": 6903.854545454
+        },
+        "previous_price_with_tax": {
+          "currency": "EUR",
+          "amount": 7594.24 "<precioAnterior>4968.96</precioAnterior> ---Recuperar primero"
+        },
+        "previous_price_without_tax": {
+          "currency": "EUR",
+          "amount": 6903.854545454
+        },
+        "transfer_price_with_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "transfer_price_without_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "riuclass_points": null
+      },
+      "hotel_booking_policy": {
+        "release_days": 0,
+        "minimum_stay_days": 0
+      },
+      "added_value_services": null
+    },
+    {
+      "messages": null,
+      "code": "0",
+      "hotel": 102,
+      "board": "ROOM_AND_BREAKFAST",
+      "rates_type": "refundable",
+      "combination": {
+        "combination_type": "DIFF",
+        "rooms": [
+          {
+            "room_type_code": "SJSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 3797.12
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 3451.927272727
+              }
+            ],
+            "free_paxes": null
+          },
+          {
+            "room_type_code": "DDSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2484.48 "<precio>2484.48</precio> ---Recuperar Segundo"
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2258.618181818
+              }
+            ],
+            "free_paxes": null
+          }
+        ]
+      },
+      "prices": {
+        "price_with_tax": {
+          "currency": "EUR",
+          "amount": 6281.60
+        },
+        "price_without_tax": {
+          "currency": "EUR",
+          "amount": 5710.545454545
+        },
+        "previous_price_with_tax": {
+          "currency": "EUR",
+          "amount": 6281.60
+        },
+        "previous_price_without_tax": {
+          "currency": "EUR",
+          "amount": 5710.545454545
+        },
+        "transfer_price_with_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "transfer_price_without_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "riuclass_points": null
+      },
+      "hotel_booking_policy": {
+        "release_days": 0,
+        "minimum_stay_days": 0
+      },
+      "added_value_services": null
+    },
+    {
+      "messages": null,
+      "code": "0",
+      "hotel": 102,
+      "board": "ROOM_AND_BREAKFAST",
+      "rates_type": "refundable",
+      "combination": {
+        "combination_type": "DIFF",
+        "rooms": [
+          {
+            "room_type_code": "SJSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 3797.12
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 3451.927272727
+              }
+            ],
+            "free_paxes": null
+          },
+          {
+            "room_type_code": "DGSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2922.24
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2656.581818182
+              }
+            ],
+            "free_paxes": null
+          }
+        ]
+      },
+      "prices": {
+        "price_with_tax": {
+          "currency": "EUR",
+          "amount": 6719.36
+        },
+        "price_without_tax": {
+          "currency": "EUR",
+          "amount": 6108.509090909
+        },
+        "previous_price_with_tax": {
+          "currency": "EUR",
+          "amount": 6719.36
+        },
+        "previous_price_without_tax": {
+          "currency": "EUR",
+          "amount": 6108.509090909
+        },
+        "transfer_price_with_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "transfer_price_without_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "riuclass_points": null
+      },
+      "hotel_booking_policy": {
+        "release_days": 0,
+        "minimum_stay_days": 0
+      },
+      "added_value_services": null
+    },
+    {
+      "messages": null,
+      "code": "0",
+      "hotel": 102,
+      "board": "ROOM_AND_BREAKFAST",
+      "rates_type": "refundable",
+      "combination": {
+        "combination_type": "DIFF",
+        "rooms": [
+          {
+            "room_type_code": "DDSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2484.48
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2258.618181818
+              }
+            ],
+            "free_paxes": null
+          },
+          {
+            "room_type_code": "DDSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2484.48
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2258.618181818
+              }
+            ],
+            "free_paxes": null
+          }
+        ]
+      },
+      "prices": {
+        "price_with_tax": {
+          "currency": "EUR",
+          "amount": 4968.96
+        },
+        "price_without_tax": {
+          "currency": "EUR",
+          "amount": 4517.236363636
+        },
+        "previous_price_with_tax": {
+          "currency": "EUR",
+          "amount": 4968.96
+        },
+        "previous_price_without_tax": {
+          "currency": "EUR",
+          "amount": 4517.236363636
+        },
+        "transfer_price_with_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "transfer_price_without_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "riuclass_points": null
+      },
+      "hotel_booking_policy": {
+        "release_days": 0,
+        "minimum_stay_days": 0
+      },
+      "added_value_services": null
+    },
+    {
+      "messages": null,
+      "code": "0",
+      "hotel": 102,
+      "board": "ROOM_AND_BREAKFAST",
+      "rates_type": "refundable",
+      "combination": {
+        "combination_type": "DIFF",
+        "rooms": [
+          {
+            "room_type_code": "DDSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2484.48
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2258.618181818
+              }
+            ],
+            "free_paxes": null
+          },
+          {
+            "room_type_code": "DGSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2922.24
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2656.581818182
+              }
+            ],
+            "free_paxes": null
+          }
+        ]
+      },
+      "prices": {
+        "price_with_tax": {
+          "currency": "EUR",
+          "amount": 5406.72
+        },
+        "price_without_tax": {
+          "currency": "EUR",
+          "amount": 4915.200000000
+        },
+        "previous_price_with_tax": {
+          "currency": "EUR",
+          "amount": 5406.72
+        },
+        "previous_price_without_tax": {
+          "currency": "EUR",
+          "amount": 4915.200000000
+        },
+        "transfer_price_with_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "transfer_price_without_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "riuclass_points": null
+      },
+      "hotel_booking_policy": {
+        "release_days": 0,
+        "minimum_stay_days": 0
+      },
+      "added_value_services": null
+    },
+    {
+      "messages": null,
+      "code": "0",
+      "hotel": 102,
+      "board": "ROOM_AND_BREAKFAST",
+      "rates_type": "refundable",
+      "combination": {
+        "combination_type": "DIFF",
+        "rooms": [
+          {
+            "room_type_code": "DGSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2922.24
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2656.581818182
+              }
+            ],
+            "free_paxes": null
+          },
+          {
+            "room_type_code": "DGSB",
+            "guest_distribution": {
+              "adults": 2,
+              "children": 0,
+              "babies": 0,
+              "children_ages": null
+            },
+            "price_with_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2922.24
+              }
+            ],
+            "price_without_tax": [
+              {
+                "currency": "EUR",
+                "amount": 2656.581818182
+              }
+            ],
+            "free_paxes": null
+          }
+        ]
+      },
+      "prices": {
+        "price_with_tax": {
+          "currency": "EUR",
+          "amount": 5844.48
+        },
+        "price_without_tax": {
+          "currency": "EUR",
+          "amount": 5313.163636364
+        },
+        "previous_price_with_tax": {
+          "currency": "EUR",
+          "amount": 5844.48
+        },
+        "previous_price_without_tax": {
+          "currency": "EUR",
+          "amount": 5313.163636364
+        },
+        "transfer_price_with_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "transfer_price_without_tax": {
+          "currency": "EUR",
+          "amount": 0
+        },
+        "riuclass_points": null
+      },
+      "hotel_booking_policy": {
+        "release_days": 0,
+        "minimum_stay_days": 0
+      },
+      "added_value_services": null
+    }
+  ]
+}

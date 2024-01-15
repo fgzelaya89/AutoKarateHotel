@@ -1,0 +1,655 @@
+{"soap:Envelope": {
+    "Objeto": {
+      "soap:Body": {
+        "recuperarTablaPreciosRBResponse": {
+          "Objeto": {
+            "out": {
+              "LMensajes": {
+                "Objeto": null,
+                "Arroba": {
+                  "xmlns": "http://dtos.booking.rumbonet.riu.com"
+                }
+              },
+              "errores": {
+                "Objeto": null,
+                "Arroba": {
+                  "xmlns": "http://dtos.booking.rumbonet.riu.com",
+                  "xsi:nil": "true"
+                }
+              },
+              "estado": {
+                "Objeto": "OK",
+                "Arroba": {
+                  "xmlns": "http://dtos.booking.rumbonet.riu.com"
+                }
+              },
+              "listaAvail": {
+                "Objeto": {
+                  "ValorarCombinacionesRbDto": [
+                    {
+                      "LMensajesAvail": {
+                        "MensajeDto": {
+                          "LValores": null,
+                          "codigo": "UI001",
+                          "valorGeneral": "1"
+                        }
+                      },
+                      "ambito": "DIR",
+                      "cadenaValidacionComb": "DIR##102EUR*DDSBHD200*DDSBHD200",
+                      "codigoDivisa": "EUR",
+                      "descuentoPuntosGeneradoDto": {
+                        "descuento": "0.0",
+                        "maximo": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "porcentaje": "0.0",
+                        "precioCodDiv": "0.0",
+                        "puntos": "0"
+                      },
+                      "disponibilidad": "0",
+                      "estmin": "0",
+                      "hotel": "102",
+                      "hotelObjetotarifa": "102",
+                      "id": "1",
+                      "listaDesglose": {
+                        "DesglosePreciosDto": [
+                          {
+                            "concepto": "TOTALObjetoAObjetoPAGAR",
+                            "incluido": "S",
+                            "precio": "4968.96"
+                          },
+                          {
+                            "concepto": "TRASLADO",
+                            "incluido": "S",
+                            "precio": "0.0"
+                          },
+                          {
+                            "concepto": "IMPORTEObjetoTOTALObjetoESTANCIA",
+                            "incluido": "N",
+                            "precio": "0"
+                          },
+                          {
+                            "concepto": "PROMOCODE",
+                            "incluido": "N",
+                            "precio": "0"
+                          }
+                        ]
+                      },
+                      "listaHabitaciones": {
+                        "HabitacionesValCombinacionesDto": [
+                          {
+                            "codtha": "DDSB",
+                            "codtre": "HD",
+                            "edades": null,
+                            "flagCompararOcupacionEnEquals": "0",
+                            "gratuidades": null,
+                            "listaPeriodosPrecio": {
+                              "Objeto": null,
+                              "Arroba": {
+                                "xsi:nil": "true"
+                              }
+                            },
+                            "numHab": "0",
+                            "numad": "2",
+                            "numbb": "0",
+                            "numni": "0",
+                            "precio": "2484.48",
+                            "precioSinImpuestos": "0.0"
+                          },
+                          {
+                            "codtha": "DDSB",
+                            "codtre": "HD",
+                            "edades": null,
+                            "flagCompararOcupacionEnEquals": "0",
+                            "gratuidades": null,
+                            "listaPeriodosPrecio": {
+                              "Objeto": null,
+                              "Arroba": {
+                                "xsi:nil": "true"
+                              }
+                            },
+                            "numHab": "0",
+                            "numad": "2",
+                            "numbb": "0",
+                            "numni": "0",
+                            "precio": "2484.48",
+                            "precioSinImpuestos": "0.0"
+                          }
+                        ]
+                      },
+                      "listaMultiCurrency": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "listaResortCreditsAddedValues": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "listaTransfers": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "lmotivo": null,
+                      "paradaventa": null,
+                      "precio": "4968.96",
+                      "precioAnterior": "4968.96",
+                      "precioAnteriorSinImpuestos": "0.0",
+                      "precioSinImpuestos": "0.0",
+                      "precioSinPuntos": "0.0",
+                      "precioTransfer": "0.0",
+                      "precioTransferSinImpuestos": "0.0",
+                      "puntosHabitacion": "0.0",
+                      "release": "0",
+                      "switaxinl": "S",
+                      "tipTransfer": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "tipoCombinacion": "IGL",
+                      "tipoTarifa": null,
+                      "translationTHabs": {
+                        "errores": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "estado": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "listTHabs": {
+                          "THabsDto": {
+                            "codTha": "DDSB",
+                            "hotel": "0",
+                            "listTranslation": {
+                              "TranslationDto": [
+                                {
+                                  "description": "Double Room",
+                                  "language": "CH"
+                                },
+                                {
+                                  "description": "Doppelzimmer",
+                                  "language": "D"
+                                },
+                                {
+                                  "description": "Habitación doble",
+                                  "language": "E"
+                                },
+                                {
+                                  "description": "Chambre Double",
+                                  "language": "F"
+                                },
+                                {
+                                  "description": "Double Room",
+                                  "language": "GB"
+                                },
+                                {
+                                  "description": "Camera doppia",
+                                  "language": "I"
+                                },
+                                {
+                                  "description": "Tweepersoonskamer",
+                                  "language": "NL"
+                                },
+                                {
+                                  "description": "Double Room",
+                                  "language": "PL"
+                                },
+                                {
+                                  "description": "Quarto Duplo",
+                                  "language": "PT"
+                                },
+                                {
+                                  "description": "Double Room",
+                                  "language": "RU"
+                                },
+                                {
+                                  "description": "Double Room",
+                                  "language": "US"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "version1": "N"
+                    },
+                    {
+                      "LMensajesAvail": {
+                        "MensajeDto": {
+                          "LValores": null,
+                          "codigo": "UI001",
+                          "valorGeneral": "1"
+                        }
+                      },
+                      "ambito": "DIR",
+                      "cadenaValidacionComb": "DIR##102EUR*DGSBHD200*DGSBHD200",
+                      "codigoDivisa": "EUR",
+                      "descuentoPuntosGeneradoDto": {
+                        "descuento": "0.0",
+                        "maximo": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "porcentaje": "0.0",
+                        "precioCodDiv": "0.0",
+                        "puntos": "0"
+                      },
+                      "disponibilidad": "0",
+                      "estmin": "0",
+                      "hotel": "102",
+                      "hotelObjetotarifa": "102",
+                      "id": "2",
+                      "listaDesglose": {
+                        "DesglosePreciosDto": [
+                          {
+                            "concepto": "TOTALObjetoAObjetoPAGAR",
+                            "incluido": "S",
+                            "precio": "5844.48"
+                          },
+                          {
+                            "concepto": "TRASLADO",
+                            "incluido": "S",
+                            "precio": "0.0"
+                          },
+                          {
+                            "concepto": "IMPORTEObjetoTOTALObjetoESTANCIA",
+                            "incluido": "N",
+                            "precio": "0"
+                          },
+                          {
+                            "concepto": "PROMOCODE",
+                            "incluido": "N",
+                            "precio": "0"
+                          }
+                        ]
+                      },
+                      "listaHabitaciones": {
+                        "HabitacionesValCombinacionesDto": [
+                          {
+                            "codtha": "DGSB",
+                            "codtre": "HD",
+                            "edades": null,
+                            "flagCompararOcupacionEnEquals": "0",
+                            "gratuidades": null,
+                            "listaPeriodosPrecio": {
+                              "Objeto": null,
+                              "Arroba": {
+                                "xsi:nil": "true"
+                              }
+                            },
+                            "numHab": "0",
+                            "numad": "2",
+                            "numbb": "0",
+                            "numni": "0",
+                            "precio": "2922.24",
+                            "precioSinImpuestos": "0.0"
+                          },
+                          {
+                            "codtha": "DGSB",
+                            "codtre": "HD",
+                            "edades": null,
+                            "flagCompararOcupacionEnEquals": "0",
+                            "gratuidades": null,
+                            "listaPeriodosPrecio": {
+                              "Objeto": null,
+                              "Arroba": {
+                                "xsi:nil": "true"
+                              }
+                            },
+                            "numHab": "0",
+                            "numad": "2",
+                            "numbb": "0",
+                            "numni": "0",
+                            "precio": "2922.24",
+                            "precioSinImpuestos": "0.0"
+                          }
+                        ]
+                      },
+                      "listaMultiCurrency": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "listaResortCreditsAddedValues": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "listaTransfers": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "lmotivo": null,
+                      "paradaventa": null,
+                      "precio": "5844.48",
+                      "precioAnterior": "5844.48",
+                      "precioAnteriorSinImpuestos": "0.0",
+                      "precioSinImpuestos": "0.0",
+                      "precioSinPuntos": "0.0",
+                      "precioTransfer": "0.0",
+                      "precioTransferSinImpuestos": "0.0",
+                      "puntosHabitacion": "0.0",
+                      "release": "0",
+                      "switaxinl": "S",
+                      "tipTransfer": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "tipoCombinacion": "IGL",
+                      "tipoTarifa": null,
+                      "translationTHabs": {
+                        "errores": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "estado": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "listTHabs": {
+                          "THabsDto": {
+                            "codTha": "DGSB",
+                            "hotel": "0",
+                            "listTranslation": {
+                              "TranslationDto": [
+                                {
+                                  "description": "Grande Double Room",
+                                  "language": "CH"
+                                },
+                                {
+                                  "description": "Großes Doppelzimmer",
+                                  "language": "D"
+                                },
+                                {
+                                  "description": "Doble Grande",
+                                  "language": "E"
+                                },
+                                {
+                                  "description": "Double Grande",
+                                  "language": "F"
+                                },
+                                {
+                                  "description": "Grande Double Room",
+                                  "language": "GB"
+                                },
+                                {
+                                  "description": "Doppia Grande",
+                                  "language": "I"
+                                },
+                                {
+                                  "description": "Grote tweepersoonskamer",
+                                  "language": "NL"
+                                },
+                                {
+                                  "description": "Grande Double Room",
+                                  "language": "PL"
+                                },
+                                {
+                                  "description": "Duplo Grande Standard Balcao",
+                                  "language": "PT"
+                                },
+                                {
+                                  "description": "Grande Double Room",
+                                  "language": "RU"
+                                },
+                                {
+                                  "description": "Grande Double Room",
+                                  "language": "US"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "version1": "N"
+                    },
+                    {
+                      "LMensajesAvail": {
+                        "MensajeDto": {
+                          "LValores": null,
+                          "codigo": "UI001",
+                          "valorGeneral": "1"
+                        }
+                      },
+                      "ambito": "DIR",
+                      "cadenaValidacionComb": "DIR##102EUR*SJSBHD200*SJSBHD200",
+                      "codigoDivisa": "EUR",
+                      "descuentoPuntosGeneradoDto": {
+                        "descuento": "0.0",
+                        "maximo": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "porcentaje": "0.0",
+                        "precioCodDiv": "0.0",
+                        "puntos": "0"
+                      },
+                      "disponibilidad": "0",
+                      "estmin": "0",
+                      "hotel": "102",
+                      "hotelObjetotarifa": "102",
+                      "id": "3",
+                      "listaDesglose": {
+                        "DesglosePreciosDto": [
+                          {
+                            "concepto": "TOTALObjetoAObjetoPAGAR",
+                            "incluido": "S",
+                            "precio": "7594.24"
+                          },
+                          {
+                            "concepto": "TRASLADO",
+                            "incluido": "S",
+                            "precio": "0.0"
+                          },
+                          {
+                            "concepto": "IMPORTEObjetoTOTALObjetoESTANCIA",
+                            "incluido": "N",
+                            "precio": "0"
+                          },
+                          {
+                            "concepto": "PROMOCODE",
+                            "incluido": "N",
+                            "precio": "0"
+                          }
+                        ]
+                      },
+                      "listaHabitaciones": {
+                        "HabitacionesValCombinacionesDto": [
+                          {
+                            "codtha": "SJSB",
+                            "codtre": "HD",
+                            "edades": null,
+                            "flagCompararOcupacionEnEquals": "0",
+                            "gratuidades": null,
+                            "listaPeriodosPrecio": {
+                              "Objeto": null,
+                              "Arroba": {
+                                "xsi:nil": "true"
+                              }
+                            },
+                            "numHab": "0",
+                            "numad": "2",
+                            "numbb": "0",
+                            "numni": "0",
+                            "precio": "3797.12",
+                            "precioSinImpuestos": "0.0"
+                          },
+                          {
+                            "codtha": "SJSB",
+                            "codtre": "HD",
+                            "edades": null,
+                            "flagCompararOcupacionEnEquals": "0",
+                            "gratuidades": null,
+                            "listaPeriodosPrecio": {
+                              "Objeto": null,
+                              "Arroba": {
+                                "xsi:nil": "true"
+                              }
+                            },
+                            "numHab": "0",
+                            "numad": "2",
+                            "numbb": "0",
+                            "numni": "0",
+                            "precio": "3797.12",
+                            "precioSinImpuestos": "0.0"
+                          }
+                        ]
+                      },
+                      "listaMultiCurrency": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "listaResortCreditsAddedValues": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "listaTransfers": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "lmotivo": null,
+                      "paradaventa": null,
+                      "precio": "7594.24",
+                      "precioAnterior": "7594.24",
+                      "precioAnteriorSinImpuestos": "0.0",
+                      "precioSinImpuestos": "0.0",
+                      "precioSinPuntos": "0.0",
+                      "precioTransfer": "0.0",
+                      "precioTransferSinImpuestos": "0.0",
+                      "puntosHabitacion": "0.0",
+                      "release": "0",
+                      "switaxinl": "S",
+                      "tipTransfer": {
+                        "Objeto": null,
+                        "Arroba": {
+                          "xsi:nil": "true"
+                        }
+                      },
+                      "tipoCombinacion": "IGL",
+                      "tipoTarifa": null,
+                      "translationTHabs": {
+                        "errores": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "estado": {
+                          "Objeto": null,
+                          "Arroba": {
+                            "xsi:nil": "true"
+                          }
+                        },
+                        "listTHabs": {
+                          "THabsDto": {
+                            "codTha": "SJSB",
+                            "hotel": "0",
+                            "listTranslation": {
+                              "TranslationDto": [
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "CH"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "D"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "E"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "F"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "GB"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "I"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "NL"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "PL"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "PT"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "RU"
+                                },
+                                {
+                                  "description": "Jr. Suite",
+                                  "language": "US"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "version1": "N"
+                    }
+                  ]
+                },
+                "Arroba": {
+                  "xmlns": "http://dtos.booking.rumbonet.riu.com"
+                }
+              }
+            }
+          },
+          "Arroba": {
+            "xmlns": "http://services.booking.rumbonet.riu.com"
+          }
+        }
+      }
+    },
+    "Arroba": {
+      "xmlns:soap": "http://schemas.xmlsoap.org/soap/envelope/",
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
+    }
+  }
+}

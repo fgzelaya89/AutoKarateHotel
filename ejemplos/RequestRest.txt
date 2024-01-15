@@ -1,0 +1,35 @@
+{
+   "guest_checkin_date":"2023-11-30",
+   "country_origin":"ES",
+   "vendor":"DIRECT",
+   "guest_checkout_date":"2024-01-01",
+   "destination":{
+      "country":"DE",
+      "hotels":[
+         102
+      ],
+      "destination":""
+   },
+   "guest_distributions":[
+      {
+         "children":0,
+         "adults":2,
+         "babies":0,
+         "children_ages":[
+            
+         ]
+      },
+      {
+         "children":0,
+         "adults":2,
+         "babies":0,
+         "children_ages":[
+            
+         ]
+      }
+   ],
+   "channel":"WEB",
+   "boards":[
+      "ROOM_AND_BREAKFAST"
+   ]
+}

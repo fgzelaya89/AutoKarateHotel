@@ -1,0 +1,28 @@
+Preguntar 
+
+-----Dentro del objeto HabitacionesValCombinacionesDto
+<codtha>DDSB</codtha>
+<codtre>HD</codtre>
+<edades/> esto alguna ves reponde algo?? entiendo que son por lo niños cuando enviamos niño para reservar
+<flagCompararOcupacionEnEquals>0</flagCompararOcupacionEnEquals>
+<gratuidades/> esto q es?? alguna ves reponde algo?
+<listaPeriodosPrecio xsi:nil="true"/> esto q es?? alguna ves reponde algo?
+<numHab>0</numHab>
+<numad>2</numad>
+<numbb>0</numbb>
+<numni>0</numni>
+<precio>2484.48</precio> ---Recuperar Segundo
+<precioSinImpuestos>0.0</precioSinImpuestos>
+
+-----alguna ves van a traer datos?
+// <listaMultiCurrency xsi:nil="true"/>
+//<listaResortCreditsAddedValues xsi:nil="true"/>
+//<listaTransfers xsi:nil="true"/>
+//<lmotivo/>
+// paradaventa; <paradaventa/> Esta comentado por que este request no trae dato y no se si es lista o un dato
+  // tipoTarifa; <tipoTarifa/> Esta comentado por que este request no trae dato y no se si es lista o un dato
+     
+
+[OJO]
+Cuando busca dentro de los "ValorarCombinacionesRbDto" existen dos tags "hotel", una esta a la altura de la rais y otro dentro de una lista listTHabs
+
