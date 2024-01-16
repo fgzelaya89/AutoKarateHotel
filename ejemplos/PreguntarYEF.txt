@@ -26,3 +26,8 @@ Preguntar
 [OJO]
 Cuando busca dentro de los "ValorarCombinacionesRbDto" existen dos tags "hotel", una esta a la altura de la rais y otro dentro de una lista listTHabs
 
+
+
+----- Anotacion
+De la consulta rest estan faltando enviar dos
+

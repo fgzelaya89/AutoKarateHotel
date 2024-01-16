@@ -142,7 +142,7 @@ public class PruebaData {
     }
 
     public String getUsuario() {
-        return usuario;
+        return (usuario != "") ? usuario.split("\\.")[0] : "0";
     }
 
     public void setUsuario(String usuario) {

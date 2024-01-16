@@ -8,5 +8,4 @@ public class testBorrar {
         return new RequestMyStoreApi(12999,"Nano8","Diario de informatico","Libros","Cordoba","Interes");
     }
 
-
 }

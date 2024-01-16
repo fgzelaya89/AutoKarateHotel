@@ -8,8 +8,10 @@ import model.PruebaData;
 import model.TestCase;
 import model.request.RequestRest.Destination;
 import model.request.RequestRest.GuestDistributionsItem;
+import model.request.RequestRest.LoyaltyRiuclass;
 import model.request.RequestRest.RequestRest;
 import model.request.RequestSOAP;
+
 import model.request.testBorrar.RequestMyStoreApi;
 import model.responseSOAP.ReadResponseSOAP;
 import org.apache.poi.ss.usermodel.Row;
@@ -246,6 +248,20 @@ public class UtilsDate {
         requestRest.setCountryOrigin(testCase.getCodPai());
         requestRest.setChannel("WEB");
         requestRest.setVendor(testCase.AmbitoRest());
+
+        //
+        requestRest.setPromocode(testCase.getPromocode());
+
+        //Revisar por que todavia no esta mapeo
+//        LoyaltyRiupartnerclass loyaltyRiupartnerclass = new LoyaltyRiupartnerclass(Integer.parseInt(testCase.getUsuario()));
+//        if(loyaltyRiupartnerclass.getAccountCode() != 0)
+//        requestRest.setLoyaltyRiupartnerclass(loyaltyRiupartnerclass);
+
+        LoyaltyRiuclass loyaltyRiuclass = new LoyaltyRiuclass();
+        loyaltyRiuclass.setAccountCode(Integer.parseInt(testCase.getUsuario()));
+        if(loyaltyRiuclass.getAccountCode() != 0)
+            requestRest.setLoyaltyRiuclass(loyaltyRiuclass);
+
 
         return requestRest;
     }

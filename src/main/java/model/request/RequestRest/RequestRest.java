@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import model.request.newRquestRest.LoyaltyRiuclass;
-import model.request.newRquestRest.LoyaltyRiupartnerclass;
+
 
 public class RequestRest {
 

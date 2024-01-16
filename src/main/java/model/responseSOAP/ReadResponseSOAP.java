@@ -1,7 +1,7 @@
 package model.responseSOAP;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.auxResponseSOAP.ResponseSOAP;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,14 +27,19 @@ public class ReadResponseSOAP {
         System.out.println("--------------getlistaAvail(response)------------------");
         ListaAvail listaAvail = getlistaAvail(response);
         cont = 1;
-        for(ValorarCombinacionesRbDto v: listaAvail.getListaAvail()){
-            System.out.println("ValorarCombinacionesRbDto["+cont+"]: \n\t"+v.toString());
+        for (ValorarCombinacionesRbDto v : listaAvail.getListaAvail()) {
+            System.out.println("ValorarCombinacionesRbDto[" + cont + "]: \n\t" + v.toString());
             cont++;
         }
 
+//        System.out.println("");
+//        System.out.println("--------------ObservacionesSOAP------------------");
+//        System.out.println("ObservacionesSOAP: \n\t"+ObservacionesSOAP.getInfoObservacionesSOAP());
+
         System.out.println("");
-        System.out.println("--------------ObservacionesSOAP------------------");
-        System.out.println("ObservacionesSOAP: \n\t"+ObservacionesSOAP.getInfoObservacionesSOAP());
+        System.out.println("--------------getInfoResponseSOAP------------------");
+        System.out.println(getInfoResponseSOAP(listaAvail));
+
 
     }
 
@@ -106,25 +111,7 @@ public class ReadResponseSOAP {
         return "{}";
     }
 
-    // CREAMOS UN ResponseSOAP EN BASE A LA REPUESTA FORMATIADA DE JSON
-    public static ResponseSOAP getResponseSOAP(String jsonString) {
-        ResponseSOAP responseSOAP = null;
-        try {
-            // Crear un objeto ObjectMapper
-            ObjectMapper objectMapper = new ObjectMapper();
 
-            // Convertir el JSON a la clase Persona
-            responseSOAP = objectMapper.readValue(jsonString, ResponseSOAP.class);
-
-            // Imprimir la instancia de la clase Persona
-            // System.out.println(responseRest);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("[ERROR] Fallo Metodo getResponseSOAP de la clase LeerRequestSOAP");
-        }
-        return responseSOAP;
-    }
 
 
     ///Devuelve una lista de String con los datos que estend entro de tag ValorarCombinacionesRbDto
@@ -215,7 +202,7 @@ public class ReadResponseSOAP {
         }
         ObservacionesSOAP.addInfoReadSOAP("Total de habitaciones disponible: " + listCombinacionesRbDto.size());
         for (String auxCombinacionesRbDto : listCombinacionesRbDto) {
-             valorarCombinacionesRbDto = getValorarCombinacionesRbDto(auxCombinacionesRbDto);
+            valorarCombinacionesRbDto = getValorarCombinacionesRbDto(auxCombinacionesRbDto);
             listaAvail.addListaAvail(valorarCombinacionesRbDto);
         }
 
@@ -350,7 +337,6 @@ public class ReadResponseSOAP {
         valorarCombinacionesRbDto.setTipoCombinacion(auxreadTagsSOAP.get(0));
 
 
-
 //        // tipoTarifa; <tipoTarifa/> Esta comentado por que este request no trae dato y no se si es lista o un dato
 //        auxreadTagsSOAP = readTagsSOAP(CombinacionesRbDto, "tipoTarifa");
 //        if (auxreadTagsSOAP.size() > 1)
@@ -362,8 +348,6 @@ public class ReadResponseSOAP {
         if (auxreadTagsSOAP.size() > 1)
             ObservacionesSOAP.addObsInconsistencia("Se encontro mas de un tags de version1 " + auxreadTagsSOAP.size());
         valorarCombinacionesRbDto.setVersion1(auxreadTagsSOAP.get(0));
-
-
 
 
         //listaHabitaciones
@@ -430,6 +414,40 @@ public class ReadResponseSOAP {
         }
 
         return valorarCombinacionesRbDto;
+    }
+
+
+    public static String getInfoResponseSOAP(ListaAvail listaAvail) {
+        String ValorarCombinacionesRbDto = "Total De ValorarCombinacionesRbDto: " + listaAvail.getListaAvail().size() + "\n\t";
+        StringBuilder HabitacionesDisponibles = new StringBuilder();
+        int cont = 1;
+        for (ValorarCombinacionesRbDto aux : listaAvail.getListaAvail()) {
+            HabitacionesDisponibles.append("> ValorarCombinacionesRbDto[").append(cont).append("]:\n\t");
+            HabitacionesDisponibles.append("\t>> Ambito: " + aux.getAmbito() + "\n\t");
+            HabitacionesDisponibles.append("\t>> cadenaValidacionComb: " + aux.getCadenaValidacionComb() + "\n\t");
+            HabitacionesDisponibles.append("\t>> disponibilidad: " + aux.getDisponibilidad() + "\n\t");
+            HabitacionesDisponibles.append("\t>> estmin: " + aux.getEstmin() + "\n\t");
+            HabitacionesDisponibles.append("\t>> hotel: " + aux.getHotel() + "\n\t");
+            HabitacionesDisponibles.append("\t>> hotel_tarifa: " + aux.getHotel_tarifa() + "\n\t");
+            HabitacionesDisponibles.append("\t>> id: " + aux.getId() + "\n\t");
+
+            HabitacionesDisponibles.append("\t>>> listaHabitaciones: " + aux.getListaHabitaciones().size() + "\n\t");
+            int contHVCB = 1;
+            for (HabitacionesValCombinacionesDto auxB : aux.getListaHabitaciones()) {
+                HabitacionesDisponibles.append("\t\t>> HabitacionesValCombinacionesDto[").append(contHVCB).append("]:\n\t");
+                HabitacionesDisponibles.append("\t\t\t>>> codtha: " + auxB.getCodtha() + "\n\t");
+                HabitacionesDisponibles.append("\t\t\t>>> codtre: " + auxB.getCodtre() + "\n\t");
+                HabitacionesDisponibles.append("\t\t\t>>> numHab: " + auxB.getNumHab() + "\n\t");
+                HabitacionesDisponibles.append("\t\t\t>>> numad: " + auxB.getNumad() + "\n\t");
+                HabitacionesDisponibles.append("\t\t\t>>> numbb: " + auxB.getNumbb() + "\n\t");
+                HabitacionesDisponibles.append("\t\t\t>>> numni: " + auxB.getNumni() + "\n\t");
+                HabitacionesDisponibles.append("\t\t\t>>> precio: " + auxB.getPrecio() + "\n\t");
+                HabitacionesDisponibles.append("\t\t\t>>> precioSinImpuestos: " + auxB.getPrecioSinImpuestos() + "\n\t");
+                contHVCB++;
+            }
+            cont++;
+        }
+        return ValorarCombinacionesRbDto + HabitacionesDisponibles;
     }
 
 }
