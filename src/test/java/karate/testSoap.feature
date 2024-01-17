@@ -81,7 +81,7 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
       | 3      |
 
 
-@soloJSON
+  @soloJSON
   Scenario: Crear un nuevo producto
     Given path '/catalog/product'
     * url 'https://mystoreapi.com'
@@ -106,7 +106,7 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
     Then status 201
     And print 'result ',response
 
-  * def responseJSON =
+    * def responseJSON =
     """
     function(response){
          var ValidarResponse = Java.type('util.ValidarResponse');
@@ -117,10 +117,7 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
   #* def stringResponse = response
   #* print 'stringResponse: ', stringResponse
   #* print 'obj.toString(): ', stringResponse.toString()
-   * def responseRest = responseJSON(response)
-
-
-
+    * def responseRest = responseJSON(response)
 
 
   @LeerXML
@@ -154,7 +151,6 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
     ####ENVIAMOS ANALISAR EL RESPONSE DEL SERVICIO SOAP
     * def callResponseSOAP = responseSOAP(xmlFormateado)
     * print 'callResponseSOAP: ', callResponseSOAP.toString()
-
 
 
   @TestJSON
@@ -198,3 +194,40 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
     * def auxResponse = read ('responseRest.json')
     * print 'auxResponse: ',auxResponse
     * def responseRest = responseJSON(auxResponse)
+
+    * def validarResponseSoapRest =
+    """
+    function(responseSoap, responseRest){
+         var ValidarResponse = Java.type('util.ValidarResponse');
+        var validarResponseSoapRest = ValidarResponse.validarResponseSoapRest(listaAvail,rest);
+        return validarResponseSoapRest;
+        }
+    """
+    * def resultValidarResponseSoapRest = validarResponseSoapRest(responseSoap,responseRest)
+    * print 'Resultado de la validacion: ', resultValidarResponseSoapRest
+
+    And print 'Numero disponibilidad rest ', responseRest.getAvailabilities().size()
+    And print 'Numero disponibilidad soap ', responseSoap.getListaAvail().size()
+    #####MOSTRAR TABLA
+    * def getTablaComparacion =
+    """
+    function(){
+         var ValidarResponse = Java.type('util.ValidarResponse');
+        var validarResponseSoapRest = ValidarResponse.getTablaComparacion();
+        return validarResponseSoapRest;
+        }
+    """
+    * def tablaCompracion = getTablaComparacion()
+    * print tablaCompracion
+
+
+    ####Reiniciar Tabla
+    * def resetTabla =
+    """
+    function(){
+         var ValidarResponse = Java.type('util.ValidarResponse');
+        var resetTabla = ValidarResponse.resetTabla();
+        return resetTabla;
+        }
+    """
+    * def vResetTabla = resetTabla()

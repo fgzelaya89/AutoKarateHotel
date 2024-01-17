@@ -16,6 +16,13 @@ public class ValidarResponse {
     private static StringBuilder tablaComparacion = new StringBuilder();
     private static int numComparacion = 1;
 
+    public static String resetTabla() {
+        numComparacion = 1;
+        tablaComparacion = new StringBuilder();
+        return "OK";
+
+    }
+
     public static void main(String[] args) {
         String responseSoap = ReadResponseSOAP.responseSOAPXML();
         ListaAvail listaAvail = ReadResponseSOAP.getlistaAvail(responseSoap);
@@ -49,6 +56,20 @@ public class ValidarResponse {
     }
 
     public static boolean validarResponseSoapRest(ListaAvail soap, ResponseRest rest) {
+
+        if (soap.getListaAvail().size() == 0) {
+            System.out.println("[INFO] El response del SOAP no devuelve disponibilidad");
+            System.out.println("[INFO] Response SOAP:\n\t" + soap.toString());
+            return false;
+        }
+
+        if (rest.getAvailabilities().size() == 0) {
+            System.out.println("[INFO] El response del REST no devuelve disponibilidad");
+            System.out.println("[INFO] Response rest:\n\t" + rest.toString());
+            return false;
+        }
+
+
         tablaComparacion.append("|Num Comp|Campo Comparacion|SOAP|REST|Resultado|\n");
         boolean comparacion = true;
         int contValorarCombinacionesRbDto = 1;
@@ -101,15 +122,17 @@ public class ValidarResponse {
                         //Condicion de control si las rooms del arreglos son iguales
                         if (ah.getCombination().getRooms().size() == contIgualdadRooms) {
                             System.out.println("comparacionAvailabilitiesItemRest:\n\t" + comparacionAvailabilitiesItem.toString());
-                            String auxPricesPreviousPriceWithTaxCurrency = comparacionAvailabilitiesItem.getPrices().getPreviousPriceWithTax().getCurrency();
-                            String auxPricesreviousPriceWithTax = comparacionAvailabilitiesItem.getPrices().getPreviousPriceWithTax().getAmount().toString();
+
+                            String auxPricesPriceWithTaxCurrency = comparacionAvailabilitiesItem.getPrices().getPriceWithTax().getCurrency();
+                            String auxPricesPriceWithTaxgetAmount = comparacionAvailabilitiesItem.getPrices().getPriceWithTax().getAmount().toString();
+
                             String auxPricesPreviousPriceWithTaxAmount = comparacionAvailabilitiesItem.getPrices().getPreviousPriceWithTax().getAmount().toString();
                             String auxPrecioHabitacion = comparacionRoomsItem.getPriceWithTax().get(0).getAmount().toString();
 
                             String outInfoHabitacionRestAmount = "> outInfoHabitacionRest: " + contValorarCombinacionesRbDto + "\n\t" +
                                     ">> Codigo Habitacion: " + comparacionRoomsItem.getRoomTypeCode() + "\n\t" +
-                                    ">> Codigo Divisa: " + auxPricesPreviousPriceWithTaxCurrency + "\n\t" +
-                                    ">> Precio: " + auxPricesreviousPriceWithTax + "\n\t" +
+                                    ">> Codigo Divisa: " + auxPricesPriceWithTaxCurrency + "\n\t" +
+                                    ">> Precio: " + auxPricesPriceWithTaxgetAmount + "\n\t" +
                                     ">> Precio Anterior: " + auxPricesPreviousPriceWithTaxAmount + "\n\t" +
                                     ">> Precio Habitacion: " + auxPrecioHabitacion + "\n\t";
                             System.out.println("");
@@ -119,12 +142,12 @@ public class ValidarResponse {
                             //En caso de que las habitaciones sean iguales iniciamos la compracion entre repuesta Soap y Rest
                             //SOAP vs Rest
                             //ValorarCombinacionesRbDto.codigoDivisa = prices.price_with_tax.currency
-                            boolean flagCodigoDivisa = codigoDivisa.equalsIgnoreCase(auxPricesPreviousPriceWithTaxCurrency);
-                            addFilatablaComparacion("Codigo Divisa", codigoDivisa, auxPricesPreviousPriceWithTaxCurrency, flagCodigoDivisa);
+                            boolean flagCodigoDivisa = codigoDivisa.equalsIgnoreCase(auxPricesPriceWithTaxCurrency);
+                            addFilatablaComparacion("Codigo Divisa", codigoDivisa, auxPricesPriceWithTaxCurrency, flagCodigoDivisa);
 
                             //ValorarCombinacionesRbDto.precio = prices.price_with_tax.amount
-                            boolean flagPrecio = precio.equalsIgnoreCase(auxPricesreviousPriceWithTax);
-                            addFilatablaComparacion("Precio", precio, auxPricesreviousPriceWithTax, flagPrecio);
+                            boolean flagPrecio = precio.equalsIgnoreCase(auxPricesPriceWithTaxgetAmount);
+                            addFilatablaComparacion("Precio", precio, auxPricesPriceWithTaxgetAmount, flagPrecio);
 
                             //ValorarCombinacionesRbDto.precioAnterior = prices.previous_price_with_tax.amount
                             boolean flagPrecioAnterior = precioAnterior.equalsIgnoreCase(auxPricesPreviousPriceWithTaxAmount);
