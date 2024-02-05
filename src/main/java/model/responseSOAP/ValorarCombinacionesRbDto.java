@@ -19,7 +19,8 @@ public class ValorarCombinacionesRbDto {
     // <listaMultiCurrency xsi:nil="true"/>
     //<listaResortCreditsAddedValues xsi:nil="true"/>
     //<listaTransfers xsi:nil="true"/>
-    private String lmotivo;
+
+    private List<MotivoDispDto> lmotivo = new ArrayList<MotivoDispDto>();
     private String paradaventa;
     private String precio;
     private String precioAnterior;
@@ -80,8 +81,12 @@ public class ValorarCombinacionesRbDto {
         this.listaHabitaciones.add(habitacionesValCombinacionesDto);
     }
 
-    public void setLmotivo(String lmotivo) {
-        this.lmotivo = lmotivo;
+    public void addlmotivo(MotivoDispDto motivoDispDto) {
+        this.lmotivo.add(motivoDispDto);
+    }
+
+    public List<MotivoDispDto> getLmotivo() {
+        return lmotivo;
     }
 
     public void setParadaventa(String paradaventa) {
@@ -176,9 +181,6 @@ public class ValorarCombinacionesRbDto {
         return listaHabitaciones;
     }
 
-    public String getLmotivo() {
-        return lmotivo;
-    }
 
     public String getParadaventa() {
         return paradaventa;

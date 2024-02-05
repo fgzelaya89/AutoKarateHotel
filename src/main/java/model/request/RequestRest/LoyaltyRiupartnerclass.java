@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LoyaltyRiupartnerclass{
 
 	@JsonProperty("account_code")
-	private int accountCode;
+	private String accountCode;
 
-	public void setAccountCode(int accountCode){
+	public void setAccountCode(String accountCode){
 		this.accountCode = accountCode;
 	}
 
-	public int getAccountCode(){
+	public String getAccountCode(){
 		return accountCode;
 	}
 

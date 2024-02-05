@@ -86,22 +86,10 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
     Given path '/catalog/product'
     * url 'https://mystoreapi.com'
 
-    * def funRequest =
-    """
-    function(){
-        var utilsDate = Java.type('util.UtilsDate');
-        var request = utilsDate.requestMyStoreApiTres();
-        return request;
-        }
-    """
-    * def v_rest = funRequest()
-    * print 'REQUEST>>: ', v_rest
-
-
     * configure ssl = true
     And header Accept = 'application/json'
     And header Content-Type = 'application/json'
-    And request   v_rest
+   # And request   v_rest
     When method post
     Then status 201
     And print 'result ',response
@@ -124,12 +112,10 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
   Scenario: leerXML
     Given url 'https://www.dataaccess.com/webservicesserver/NumberConversion.wso'
     When header Content-Type = 'text/xml'
-    * def auxResponse = read ('responseSOAP.xml')
-    And print 'responsex ',auxResponse
-    #And def json = $bodyX
-    #And print 'json >',json
 
     ###############responseSOAP####################
+    * def auxResponse = read ('responseSOAP.xml')
+    And print 'responsex ',auxResponse
     * def responseSOAP =
     """
     function(response){
@@ -138,48 +124,36 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
         return request;
         }
     """
-    ##* def miRespuesta = response <---Es la q va!!!
     * def miRespuesta = auxResponse
-    ##VEO LA REPUESTA
     * print 'miRespuesta: ', miRespuesta
-
     ####SOLO PARA PRUEBAS LOCALES FORMATIAMOS EL ARCHIVO PARA PODER TRABAJAR EN EL XML
     * def responseSOAPAsString = miRespuesta
     * print 'responseSOAPAsString: ', responseSOAPAsString
     * def xmlFormateado = karate.prettyXml(miRespuesta)
-
     ####ENVIAMOS ANALISAR EL RESPONSE DEL SERVICIO SOAP
     * def callResponseSOAP = responseSOAP(xmlFormateado)
     * print 'callResponseSOAP: ', callResponseSOAP.toString()
 
 
   @TestJSON
-  Scenario: Crear un nuevo producto
+  Scenario Outline: Llamada a ambos servicios <TEST_ITERATION>
     Given path '/catalog/product'
     * url 'https://mystoreapi.com'
-
-    * def funRequest =
-    """
-    function(){
-        var utilsDate = Java.type('util.UtilsDate');
-        var request = utilsDate.requestMyStoreApiTres();
-        return request;
-        }
-    """
-    * def v_rest = funRequest()
-    * print 'REQUEST>>: ', v_rest
-
-
     * configure ssl = true
     And header Accept = 'application/json'
     And header Content-Type = 'application/json'
-    And request   v_rest
+ #   And request   v_rest
     When method post
-    Then status 201
+
+   # Then status 201
+    * def responseStatus = responseStatus
+    And print 'responseStatus ',responseStatus
+
     And print 'result ',response
 
 
-    #######
+
+    ####REST JSON###
     * def responseJSON =
     """
     function(response){
@@ -188,26 +162,57 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
         return request;
         }
     """
-    * def stringResponse = response
-    * print 'stringResponse: ', stringResponse
-    #* def responseRest = responseJSON(stringResponse)
     * def auxResponse = read ('responseRest.json')
     * print 'auxResponse: ',auxResponse
     * def responseRest = responseJSON(auxResponse)
+    #######REST JSON FIN########
 
+    ###############responseSOAP####################
+    * def auxResponse = read ('responseSOAP.xml')
+    And print 'responsex ',auxResponse
+    * def responseSOAP =
+    """
+    function(response){
+         var ValidarResponse = Java.type('util.ValidarResponse');
+        var request = ValidarResponse.readResponseSOAP(response);
+        return request;
+        }
+    """
+    * def miRespuesta = auxResponse
+    * print 'miRespuesta: ', miRespuesta
+    ####SOLO PARA PRUEBAS LOCALES FORMATIAMOS EL ARCHIVO PARA PODER TRABAJAR EN EL XML
+    * def responseSOAPAsString = miRespuesta
+    * print 'responseSOAPAsString: ', responseSOAPAsString
+    * def xmlFormateado = karate.prettyXml(miRespuesta)
+    ####ENVIAMOS ANALISAR EL RESPONSE DEL SERVICIO SOAP
+    * def callResponseSOAP = responseSOAP(xmlFormateado)
+    * print 'callResponseSOAP: ', callResponseSOAP.toString()
+    ######responseSOAP FIN######
+
+      ###Guardar Status###
+    * def setStatusSoapRest =
+    """
+    function(idTestCase,statusSoap,statusRest){
+         var ValidarResponse = Java.type('util.ValidarResponse');
+          return ValidarResponse.setStatusSOAPRest(idTestCase,statusSoap,statusRest);
+        }
+    """
+    * def StatusSoapRest = setStatusSoapRest('<TEST_ITERATION>',200,200)
+    #Then match
+    ######
+
+    ######Validar SOAP/REST########
     * def validarResponseSoapRest =
     """
-    function(responseSoap, responseRest){
+    function(idTestCase,responseSoap, responseRest){
          var ValidarResponse = Java.type('util.ValidarResponse');
-        var validarResponseSoapRest = ValidarResponse.validarResponseSoapRest(listaAvail,rest);
+        var validarResponseSoapRest = ValidarResponse.validarResponseSoapRest(idTestCase,responseSoap,responseRest);
         return validarResponseSoapRest;
         }
     """
-    * def resultValidarResponseSoapRest = validarResponseSoapRest(responseSoap,responseRest)
+    * def resultValidarResponseSoapRest = validarResponseSoapRest('<TEST_ITERATION>',callResponseSOAP,responseRest)
     * print 'Resultado de la validacion: ', resultValidarResponseSoapRest
-
-    And print 'Numero disponibilidad rest ', responseRest.getAvailabilities().size()
-    And print 'Numero disponibilidad soap ', responseSoap.getListaAvail().size()
+   ######Validar SOAP/REST FIN ########
     #####MOSTRAR TABLA
     * def getTablaComparacion =
     """
@@ -217,10 +222,19 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
         return validarResponseSoapRest;
         }
     """
-    * def tablaCompracion = getTablaComparacion()
-    * print tablaCompracion
+    * def tablaComparacion = getTablaComparacion()
+    * print tablaComparacion
 
-
+    ########CREAR EXCEL############
+    * def writeToExcel =
+    """
+    function(tablaComparacion){
+        var ExcelWriter = Java.type('util.ExcelWriter');
+         return ExcelWriter.writeToExcel(tablaComparacion);
+    }
+    """
+    * def writeToExcelResul = writeToExcel(tablaComparacion)
+    ########CREAR EXCEL FIN############
     ####Reiniciar Tabla
     * def resetTabla =
     """
@@ -231,3 +245,8 @@ Feature:plan de pruebas orientado a las consultas del tipo soap
         }
     """
     * def vResetTabla = resetTabla()
+    Examples:
+
+      | TEST_ITERATION |
+      | idPrueba_1     |
+      | idPrueba_123     |

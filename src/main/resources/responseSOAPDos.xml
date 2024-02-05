@@ -1,0 +1,151 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soap:Body>
+        <recuperarTablaPreciosRBResponse xmlns="http://services.booking.rumbonet.riu.com">
+            <out>
+                <LMensajes xmlns="http://dtos.booking.rumbonet.riu.com"/>
+                <errores xmlns="http://dtos.booking.rumbonet.riu.com" xsi:nil="true"/>
+                <estado xmlns="http://dtos.booking.rumbonet.riu.com">OK</estado>
+                <listaAvail xmlns="http://dtos.booking.rumbonet.riu.com">
+                    <ValorarCombinacionesRbDto>
+                        <LMensajesAvail>
+                            <MensajeDto>
+                                <LValores/>
+                                <codigo>UI001</codigo>
+                                <valorGeneral>1</valorGeneral>
+                            </MensajeDto>
+                        </LMensajesAvail>
+                        <ambito>DIR</ambito>
+                        <cadenaValidacionComb>DIR##102EUR*DDSBMP100</cadenaValidacionComb>
+                        <codigoDivisa>EUR</codigoDivisa>
+                        <descuentoPuntosGeneradoDto>
+                            <descuento>0.0</descuento>
+                            <maximo xsi:nil="true"/>
+                            <porcentaje>0.0</porcentaje>
+                            <precioCodDiv>0.0</precioCodDiv>
+                            <puntos>0</puntos>
+                        </descuentoPuntosGeneradoDto>
+                        <disponibilidad>0</disponibilidad>
+                        <estmin>0</estmin>
+                        <hotel>102</hotel>
+                        <hotel_tarifa>102</hotel_tarifa>
+                        <id>1</id>
+                        <listaDesglose>
+                            <DesglosePreciosDto>
+                                <concepto>IMPORTE_TOTAL_ESTANCIA</concepto>
+                                <incluido>N</incluido>
+                                <precio>0</precio>
+                            </DesglosePreciosDto>
+                            <DesglosePreciosDto>
+                                <concepto>TRASLADO</concepto>
+                                <incluido>S</incluido>
+                                <precio>0.0</precio>
+                            </DesglosePreciosDto>
+                            <DesglosePreciosDto>
+                                <concepto>PROMOCODE</concepto>
+                                <incluido>N</incluido>
+                                <precio>0</precio>
+                            </DesglosePreciosDto>
+                            <DesglosePreciosDto>
+                                <concepto>TOTAL_A_PAGAR</concepto>
+                                <incluido>S</incluido>
+                                <precio>1601.09</precio>
+                            </DesglosePreciosDto>
+                        </listaDesglose>
+                        <listaHabitaciones>
+                            <HabitacionesValCombinacionesDto>
+                                <codtha>DDSB</codtha>
+                                <codtre>MP</codtre>
+                                <edades/>
+                                <flagCompararOcupacionEnEquals>0</flagCompararOcupacionEnEquals>
+                                <gratuidades/>
+                                <listaPeriodosPrecio xsi:nil="true"/>
+                                <numHab>0</numHab>
+                                <numad>1</numad>
+                                <numbb>0</numbb>
+                                <numni>0</numni>
+                                <precio>1601.09</precio>
+                                <precioSinImpuestos>0.0</precioSinImpuestos>
+                            </HabitacionesValCombinacionesDto>
+                        </listaHabitaciones>
+                        <listaMultiCurrency xsi:nil="true"/>
+                        <listaProveedores/>
+                        <listaResortCreditsAddedValues xsi:nil="true"/>
+                        <listaTransfers xsi:nil="true"/>
+                        <lmotivo/>
+                        <paradaventa/>
+                        <precio>1601.09</precio>
+                        <precioAnterior>1601.09</precioAnterior>
+                        <precioAnteriorSinImpuestos>0.0</precioAnteriorSinImpuestos>
+                        <precioSinImpuestos>0.0</precioSinImpuestos>
+                        <precioSinPuntos>0.0</precioSinPuntos>
+                        <precioTransfer>0.0</precioTransfer>
+                        <precioTransferSinImpuestos>0.0</precioTransferSinImpuestos>
+                        <puntosHabitacion>0.0</puntosHabitacion>
+                        <release>0</release>
+                        <switaxinl>S</switaxinl>
+                        <tipTransfer xsi:nil="true"/>
+                        <tipoCombinacion>IGL</tipoCombinacion>
+                        <tipoTarifa/>
+                        <translationTHabs>
+                            <errores xsi:nil="true"/>
+                            <estado xsi:nil="true"/>
+                            <listTHabs>
+                                <THabsDto>
+                                    <codTha>DDSB</codTha>
+                                    <hotel>0</hotel>
+                                    <listTranslation>
+                                        <TranslationDto>
+                                            <description>Double Room</description>
+                                            <language>CH</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Doppelzimmer</description>
+                                            <language>D</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Habitación doble</description>
+                                            <language>E</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Chambre Double</description>
+                                            <language>F</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Double Room</description>
+                                            <language>GB</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Camera doppia</description>
+                                            <language>I</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Tweepersoonskamer</description>
+                                            <language>NL</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Double Room</description>
+                                            <language>PL</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Quarto Duplo</description>
+                                            <language>PT</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Double Room</description>
+                                            <language>RU</language>
+                                        </TranslationDto>
+                                        <TranslationDto>
+                                            <description>Double Room</description>
+                                            <language>US</language>
+                                        </TranslationDto>
+                                    </listTranslation>
+                                </THabsDto>
+                            </listTHabs>
+                        </translationTHabs>
+                        <version1>N</version1>
+                    </ValorarCombinacionesRbDto>
+                </listaAvail>
+            </out>
+        </recuperarTablaPreciosRBResponse>
+    </soap:Body>
+</soap:Envelope>

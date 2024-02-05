@@ -6,13 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.NumeroTexto;
 import model.PruebaData;
 import model.TestCase;
-import model.request.RequestRest.Destination;
-import model.request.RequestRest.GuestDistributionsItem;
-import model.request.RequestRest.LoyaltyRiuclass;
-import model.request.RequestRest.RequestRest;
+//import model.modelDos.AvailabilityRequestEntityDto;
+import model.request.RequestRest.*;
 import model.request.RequestSOAP;
 
-import model.request.testBorrar.RequestMyStoreApi;
+
 import model.responseSOAP.ReadResponseSOAP;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -52,7 +50,7 @@ public class UtilsDate {
 
 //        System.out.println("");
 //        System.out.println("");
-        PruebaData test = getPruebaData("test_28");
+        PruebaData test = getPruebaData("test_12917");
         System.out.println(test);
 //        System.out.println("<---------getRequestUnaHabitacionSinNino---------------->");
 //        String request = getRequestUnaHabitacionSinNino(test);
@@ -65,18 +63,17 @@ public class UtilsDate {
 //        //System.out.println("request:\n\t"+request);
 //
 //        System.out.println();
-        System.out.println("<---------requestSOAP---------------->");
-        System.out.println();
-        request = requestSOAP(test);
-        System.out.println("requestSOAP:\n\t" + request);
+        //System.out.println("<---------requestSOAP---------------->");
+        //System.out.println();
+        // request = requestSOAP(test);
+        //System.out.println("requestSOAP:\n\t" + request);
 //
 //        System.out.println();
 //        System.out.println("<---------requestRest---------------->");
 //        System.out.println();
-//        RequestRest auxRequest = requestRest(test);
-//        System.out.println("request:\n\t" + auxRequest.toString());
-//        System.out.println();
-
+        RequestRest auxRequest = requestRest(test);
+        System.out.println("request:\n\t" + auxRequest.toString());
+        System.out.println();
 
 
     }
@@ -94,10 +91,10 @@ public class UtilsDate {
         return resultPruebaData;
     }
 
-    public static String responseSOAP(String responseSOAP){
-        System.out.println("responseSOAP:\n\t"+responseSOAP);
+    public static String responseSOAP(String responseSOAP) {
+        System.out.println("responseSOAP:\n\t" + responseSOAP);
         String aux = ReadResponseSOAP.getListValorarCombinacionesRbDto(responseSOAP).get(0).toString();
-        System.out.println("getListValorarCombinacionesRbDto:\n\t"+aux);
+        System.out.println("getListValorarCombinacionesRbDto:\n\t" + aux);
         return "OK";
     }
 
@@ -141,7 +138,7 @@ public class UtilsDate {
     public static List<PruebaData> readExcelTest() {
         List<PruebaData> listaPruebaData = new ArrayList<PruebaData>();
         try {
-            File f = new File("src/main/resources/excel2003.xlsx");
+            File f = new File("src/main/resources/desarrollo.xlsx");
             InputStream inp = new FileInputStream(f);
             Workbook wb = WorkbookFactory.create(inp);
             Sheet sheet = wb.getSheetAt(0);
@@ -247,6 +244,7 @@ public class UtilsDate {
 
         requestRest.setCountryOrigin(testCase.getCodPai());
         requestRest.setChannel("WEB");
+
         requestRest.setVendor(testCase.AmbitoRest());
 
         //
@@ -258,9 +256,37 @@ public class UtilsDate {
 //        requestRest.setLoyaltyRiupartnerclass(loyaltyRiupartnerclass);
 
         LoyaltyRiuclass loyaltyRiuclass = new LoyaltyRiuclass();
-        loyaltyRiuclass.setAccountCode(Integer.parseInt(testCase.getUsuario()));
-        if(loyaltyRiuclass.getAccountCode() != 0)
-            requestRest.setLoyaltyRiuclass(loyaltyRiuclass);
+        //Si es DIR o RC
+        if (!testCase.AmbitoRest().equalsIgnoreCase("AGE") && !testCase.AmbitoRest().equalsIgnoreCase("RPC")) {
+            //Si es RC
+            if (testCase.AmbitoRest().equalsIgnoreCase("RC")) {
+
+                if (!testCase.getUsuario().equalsIgnoreCase("0")) {
+                    //Si es distinto a Cero
+                    loyaltyRiuclass.setAccountCode(Integer.parseInt(testCase.getUsuario()));
+                    requestRest.setLoyaltyRiuclass(loyaltyRiuclass);
+                } else {
+                    //Envia Null
+                    requestRest.setLoyaltyRiuclass(loyaltyRiuclass);
+                }
+            } else if (testCase.AmbitoRest().equalsIgnoreCase("DIR")) {
+                //Si ambiento es es DIR, a cliente se le envia null.
+                if (!testCase.getUsuario().equalsIgnoreCase("0")) {
+                    System.out.println("El registro DIR tiene cargado el siguiente Usuario: " + testCase.getUsuario());
+                }
+                requestRest.setLoyaltyRiuclass(loyaltyRiuclass);
+            }
+
+        } else if (testCase.AmbitoRest().equalsIgnoreCase("AGE")) {
+            //Si es igual AGE
+            requestRest.setClient(testCase.getUsuario());
+        } else if (testCase.AmbitoRest().equalsIgnoreCase("RPC")) {
+            //Si es igual a RPC
+            LoyaltyRiupartnerclass loyaltyRiupartnerclass = new LoyaltyRiupartnerclass();
+            loyaltyRiupartnerclass.setAccountCode(testCase.getUsuario());
+            if (!loyaltyRiupartnerclass.getAccountCode().isEmpty())
+                requestRest.setLoyaltyRiupartnerclass(loyaltyRiupartnerclass);
+        }
 
 
         return requestRest;
@@ -282,9 +308,7 @@ public class UtilsDate {
     }
 
 
-    public static RequestMyStoreApi requestMyStoreApi() {
-        return new RequestMyStoreApi(12999, "Nano8", "Diario de informatico", "Libros", "Cordoba", "Interes");
-    }
+
 
     public static String requestMyStoreApiDos() {
         String r = " {\n" +
@@ -298,12 +322,5 @@ public class UtilsDate {
         return r;
     }
 
-    public static String requestMyStoreApiTres() throws JsonProcessingException {
-        RequestMyStoreApi producto = new RequestMyStoreApi(12999, "Nano8", "Diario de informatico", "Libros", "Cordoba", "Interes");
-        // Convertir objeto a formato JSON
-        ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(producto);
-        System.out.println("JSON generado: " + json);
-        return json;
-    }
+
 }

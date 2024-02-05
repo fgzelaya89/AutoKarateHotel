@@ -84,7 +84,11 @@
                   <listaMultiCurrency xsi:nil="true"/>
                   <listaResortCreditsAddedValues xsi:nil="true"/>
                   <listaTransfers xsi:nil="true"/>
-                  <lmotivo/>
+                  <lmotivo>
+                     <MotivoDispDto>
+                        <motdisp>MO003</motdisp>
+                     </MotivoDispDto>
+                  </lmotivo>
                   <paradaventa/>
                   <precio>4968.96</precio>
                   <precioAnterior>4968.96</precioAnterior>

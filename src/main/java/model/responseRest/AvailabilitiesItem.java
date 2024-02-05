@@ -14,7 +14,7 @@ public class AvailabilitiesItem{
 	private String ratesType;
 
 	@JsonProperty("messages")
-	private Object messages;
+	private Messages messages;
 
 	@JsonProperty("hotel")
 	private int hotel;
@@ -55,11 +55,11 @@ public class AvailabilitiesItem{
 		return ratesType;
 	}
 
-	public void setMessages(Object messages){
+	public void setMessages(Messages messages){
 		this.messages = messages;
 	}
 
-	public Object getMessages(){
+	public Messages getMessages(){
 		return messages;
 	}
 

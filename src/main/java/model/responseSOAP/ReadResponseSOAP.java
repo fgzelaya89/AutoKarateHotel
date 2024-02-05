@@ -29,6 +29,7 @@ public class ReadResponseSOAP {
         cont = 1;
         for (ValorarCombinacionesRbDto v : listaAvail.getListaAvail()) {
             System.out.println("ValorarCombinacionesRbDto[" + cont + "]: \n\t" + v.toString());
+            System.out.println("v.getPrecio()>>>> " + v.getPrecio());
             cont++;
         }
 
@@ -79,7 +80,7 @@ public class ReadResponseSOAP {
 
     //lEEMOS EL ARCHIVO XML CONTINE LA REPUESTA, NO ES IMPORANTE
     public static String responseSOAPXML() {
-        String SOURCE_PATH = "src/main/resources/responseSOAP.xml";
+        String SOURCE_PATH = "src/main/resources/responseSOAPDos.xml";
         try {
             File file = new File(SOURCE_PATH);
             // Crear un FileReader para leer el archivo
@@ -110,8 +111,6 @@ public class ReadResponseSOAP {
         }
         return "{}";
     }
-
-
 
 
     ///Devuelve una lista de String con los datos que estend entro de tag ValorarCombinacionesRbDto
@@ -156,6 +155,12 @@ public class ReadResponseSOAP {
     public static List<String> readTagsSOAP(String auxinput, String tags) {
         // Tu cadena de entrada con múltiples ocurrencias
         String input = auxinput;
+        if (tags.equalsIgnoreCase("precio")) {
+            System.out.println("auxinput: " + auxinput);
+            String nuevoInput = eliminarCoincidencias(auxinput, "listaHabitaciones");
+            nuevoInput = eliminarCoincidencias(nuevoInput, "listaDesglose");
+            input = nuevoInput;
+        }
 
         // Condiciones de búsqueda
         String startTag = "<" + tags + ">";
@@ -187,6 +192,26 @@ public class ReadResponseSOAP {
 //            cont++;
 //        }
         return matches;
+    }
+
+    public static String eliminarCoincidencias(String input, String tags) {
+        // Condiciones de búsqueda
+        String startTag = "<" + tags + ">";
+        String endTag = "</" + tags + ">";
+
+        // Crear la expresión regular
+        String regex = Pattern.quote(startTag) + "(.*?)" + Pattern.quote(endTag);
+
+        // Compilar la expresión regular
+        Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
+
+        // Obtener el matcher
+        Matcher matcher = pattern.matcher(input);
+
+        // Reemplazar todas las coincidencias con una cadena vacía
+        String result = matcher.replaceAll("");
+
+        return result;
     }
 
     //Enviamos el XML y devuelve mapeado el dato de listaAvail
@@ -258,11 +283,21 @@ public class ReadResponseSOAP {
             ObservacionesSOAP.addObsInconsistencia("Se encontro mas de un tags de id " + auxreadTagsSOAP.size());
         valorarCombinacionesRbDto.setId(auxreadTagsSOAP.get(0));
 
+        //motivoDispDto
         // lmotivo; <lmotivo/> Esta comentado por que este request no trae dato y no se si es lista o un dato
-//        auxreadTagsSOAP = readTagsSOAP(CombinacionesRbDto, "lmotivo");
-//        if (auxreadTagsSOAP.size() > 1)
-//            ObservacionesSOAP.addObsInconsistencia("Se encontro mas de un tags de lmotivo " + auxreadTagsSOAP.size());
-//        valorarCombinacionesRbDto.setLmotivo(auxreadTagsSOAP.get(0));
+        auxreadTagsSOAP = readTagsSOAP(CombinacionesRbDto, "lmotivo");
+        if (auxreadTagsSOAP.size() >= 1) {
+            ObservacionesSOAP.addObsInconsistencia("Se econtraron MotivoDispDto " + auxreadTagsSOAP.size() + " dentro de lmotivo");
+            //Buscamos los objetos MotivoDispDto dentro de la lista
+            auxreadTagsSOAP = readTagsSOAP(auxreadTagsSOAP.toString(), "MotivoDispDto");
+            for (String auxMotivoDispDto : auxreadTagsSOAP) {
+                for (String id : readTagsSOAP(auxMotivoDispDto, "motdisp")) {
+                    MotivoDispDto motivoDispDto = new MotivoDispDto(id);
+                    valorarCombinacionesRbDto.addlmotivo(motivoDispDto);
+                }
+            }
+        }
+
 
         // paradaventa; <paradaventa/> Esta comentado por que este request no trae dato y no se si es lista o un dato
 //        auxreadTagsSOAP = readTagsSOAP(CombinacionesRbDto, "paradaventa");
